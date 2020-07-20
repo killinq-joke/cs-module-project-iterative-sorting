@@ -18,16 +18,24 @@ def selection_sort(arr):
         # Your code here
     return arr
 
-arr1 = [1, 5, 8, 4, 2, 9, 6, 0, 3, 7]
-print(selection_sort(arr1))
+
 
 # TO-DO:  implement the Bubble Sort function below
 def bubble_sort(arr):
     # Your code here
+    for base in range(0, len(arr) - 1):
+        for i in range(1, len(arr) - base):
+            if arr[i] < arr[i - 1]:
+                smallest = arr[i]
+                arr[i] = arr[i - 1]
+                arr[i - 1] = smallest
 
+        base += 1
 
     return arr
 
+arr1 = [1, 5, 8, 4, 2, 9, 6, 0, 3, 7]
+print(bubble_sort(arr1))
 '''
 STRETCH: implement the Counting Sort function below
 
