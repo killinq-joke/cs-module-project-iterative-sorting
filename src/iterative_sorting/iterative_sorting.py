@@ -57,12 +57,19 @@ def counting_sort(arr, maximum=None):
     # Your code here
 
     count = [0 for i in range(0, maximum + 1)]
+    result = [0 for i in range(0, len(arr))]
 
     for i in range(0, len(arr)):
         count[arr[i]] += 1
 
-    return count
+    for i in range(0, len(count) - 1):
+        count[i + 1] = count[i] + count[i + 1]
+
+    for i in range(0, len(arr)):
+        result[arr[i]] = arr[i]
+
+    return result
 
 
-arr1 = [1, 5, 8, 4, 2, 9, 6, 0, 3, 7]
+arr1 = [1, 5, 8, 9, 2, 9, 6, 0, 3, 7]
 print(counting_sort(arr1, 9))
