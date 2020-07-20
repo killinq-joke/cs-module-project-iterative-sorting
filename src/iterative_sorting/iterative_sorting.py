@@ -56,6 +56,8 @@ What is the time and space complexity of the counting sort algorithm?
 def counting_sort(arr, maximum=0): #O(n)
     # Your code here
     for i in range(0, len(arr)):
+        if arr[i] < 0:
+            return "Error, negative numbers not allowed in Count Sort"
         if arr[i] > maximum:
             maximum = arr[i]
 
