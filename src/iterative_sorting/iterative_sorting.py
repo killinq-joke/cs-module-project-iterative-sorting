@@ -65,8 +65,9 @@ def counting_sort(arr, maximum=None):
     for i in range(0, len(count) - 1):
         count[i + 1] = count[i] + count[i + 1]
 
-    for i in range(0, len(arr)):
-        result[arr[i]] = arr[i]
+    for o in range(0, len(arr)):
+        result[count[arr[o]] - 1] = arr[o]
+        count[arr[o]] -= 1
 
     return result
 
