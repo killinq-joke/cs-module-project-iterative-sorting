@@ -53,8 +53,11 @@ What is the time and space complexity of the counting sort algorithm?
 '''
 
 
-def counting_sort(arr, maximum=None):
+def counting_sort(arr, maximum=0): #O(n)
     # Your code here
+    for i in range(0, len(arr)):
+        if arr[i] > maximum:
+            maximum = arr[i]
 
     count = [0 for i in range(0, maximum + 1)]
     result = [0 for i in range(0, len(arr))]
