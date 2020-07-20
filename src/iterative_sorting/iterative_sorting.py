@@ -70,7 +70,3 @@ def counting_sort(arr, maximum=None):
         count[arr[o]] -= 1
 
     return result
-
-
-arr1 = [1, 5, 8, 9, 2, 9, 6, 0, 3, 7]
-print(counting_sort(arr1, 9))
