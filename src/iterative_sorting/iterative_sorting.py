@@ -1,26 +1,38 @@
 # TO-DO: Complete the selection_sort() function below
 def selection_sort(arr):
     # loop through n-1 elements
-    for i in range(0, len(arr) - 1):
-        cur_index = i
-        smallest_index = cur_index
-        # TO-DO: find next smallest element
-        # (hint, can do in 3 loc)
-        # Your code here
-
+    for base in range(0, len(arr) - 1):
+        for i in range(0, len(arr) - base):
+            cur_index = i + base
+            smallest_index = arr[base]
+            # TO-DO: find next smallest element
+            # (hint, can do in 3 loc)
+            # Your code here
+            if arr[cur_index] < smallest_index:
+                smallest_index = arr[cur_index]
+                arr[cur_index] = arr[base]
+                arr[base] = smallest_index
+        base += 1
 
         # TO-DO: swap
         # Your code here
-
     return arr
 
 
 # TO-DO:  implement the Bubble Sort function below
 def bubble_sort(arr):
     # Your code here
+    for base in range(0, len(arr) - 1):
+        for i in range(1, len(arr) - base):
+            if arr[i] < arr[i - 1]:
+                smallest = arr[i]
+                arr[i] = arr[i - 1]
+                arr[i - 1] = smallest
 
+        base += 1
 
     return arr
+
 
 '''
 STRETCH: implement the Counting Sort function below
@@ -39,8 +51,27 @@ buckets.
 
 What is the time and space complexity of the counting sort algorithm?
 '''
-def counting_sort(arr, maximum=None):
+
+
+def counting_sort(arr, maximum=0): #O(n)
     # Your code here
+    for i in range(0, len(arr)):
+        if arr[i] < 0:
+            return "Error, negative numbers not allowed in Count Sort"
+        if arr[i] > maximum:
+            maximum = arr[i]
 
+    count = [0 for i in range(0, maximum + 1)]
+    result = [0 for i in range(0, len(arr))]
 
-    return arr
+    for i in range(0, len(arr)):
+        count[arr[i]] += 1
+
+    for i in range(0, len(count) - 1):
+        count[i + 1] = count[i] + count[i + 1]
+
+    for o in range(0, len(arr)):
+        result[count[arr[o]] - 1] = arr[o]
+        count[arr[o]] -= 1
+
+    return result
